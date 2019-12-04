@@ -5,12 +5,15 @@ class ClientsController < ApplicationController
   # GET /clients.json
   def index
     @clients = Client.all
+    @log = Log.all
   end
 
   # GET /clients/1
   # GET /clients/1.json
   def show
     @client=Client.find(params[:id])
+    # @client = Client.all.where(id: params[:id])
+    @logs = @client.log
   end
 
   # GET /clients/new
@@ -56,6 +59,7 @@ class ClientsController < ApplicationController
   # DELETE /clients/1
   # DELETE /clients/1.json
   def destroy
+    @client = Client.find(params[:id])
     @client.destroy
     respond_to do |format|
       format.html { redirect_to clients_url, notice: 'Client was successfully destroyed.' }

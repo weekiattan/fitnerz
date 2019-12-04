@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.profile {
+  height: 100px;
+  padding-bottom: 20px;
+}
+
+h1 {
+  text-align: center;
+  font-family: 'Fjalla One', sans-serif;
+}
+
+.showClient {
+  p {
+    font-size: 20px;
+    padding: 20px;
+    color: #395697;
+    font-family: 'Fjalla One', sans-serif;
+    background-color: pink;
+    border-radius: 5px;
+  }
+}
+
+body {
+  background-color: #aedeca;
+}

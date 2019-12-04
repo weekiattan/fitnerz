@@ -12,9 +12,26 @@ class LogsController < ApplicationController
   def show
   end
 
-  # GET /logs/new
-  def new
+  # GET /logs/new/
+  def newlog
+    @log = Log.where(:client_id => params[:id])
+    if @log.empty? 
+    @latest_log = Log.new
+    else
+      @latest_log = Log.where(:client_id => params[:id]).last
+
+    end
     @log = Log.new
+
+      
+
+   
+    p "@@@@@@@@@@@@@@@@"
+    p "@@@@@@@@@@@@@@@@"
+    p params
+    p "@@@@@@@@@@@@@@@@"
+    p "@@@@@@@@@@@@@@@@"
+    
   end
 
   # GET /logs/1/edit
@@ -25,13 +42,18 @@ class LogsController < ApplicationController
   # POST /logs.json
   def create
     @log = Log.new(log_params)
+ 
+    @client = Client.find(params[:log][:client_id])
+    
+    
 
     respond_to do |format|
       if @log.save
-        format.html { redirect_to @log, notice: 'Log was successfully created.' }
+        format.html { redirect_to @client, notice: 'Log was successfully created.' }
         format.json { render :show, status: :created, location: @log }
+        
       else
-        format.html { render :new }
+        format.html {render :new}
         format.json { render json: @log.errors, status: :unprocessable_entity }
       end
     end
@@ -54,6 +76,7 @@ class LogsController < ApplicationController
   # DELETE /logs/1
   # DELETE /logs/1.json
   def destroy
+    @log= Log.find(params[:id])
     @log.destroy
     respond_to do |format|
       format.html { redirect_to logs_url, notice: 'Log was successfully destroyed.' }
@@ -69,6 +92,6 @@ class LogsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def log_params
-      params.require(:log).permit(:title, :content, :client_id)
+      params.require(:log).permit(:height, :weight, :medical_condition, :program, :goals_needs, :comment, :client_id)
     end
 end

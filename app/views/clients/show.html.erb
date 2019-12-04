@@ -1,24 +1,54 @@
 <p id="notice"><%= notice %></p>
-
+<div class =" container-fluid">
+  <div class="row">
+      <div class ="col-12">
 <p>
   <strong>Name:</strong>
   <%= @client.name %>
-</p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @client.email %>
-</p>
+  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Height</th>
+      <th scope="col">Weight</th>
+      <th scope="col">Medical Condition</th>
+      <th scope="col">Program</th>
+      <th scope="col">Comment/Progress</th>
+      <th scope="col">Log date</th>
 
-<p>
-  <strong>Phone Number:</strong>
-  <%= @client.phone_number %>
-</p>
+      
 
-<p>
-  <strong>Sex:</strong>
-  <%= @client.sex %>
-</p>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
 
-<%= link_to 'Edit', edit_client_path(@client) %> |
-<%= link_to 'Back', clients_path %>
+  <tbody>
+    <% @client.log.each do |log| %>
+    <% time = log.created_at.localtime(utc_offset = nil) %>  
+      <tr>
+        <td><%= log.height %></td>
+        <td><%= log.weight %></td>
+        <td><%= log.medical_condition %></td>
+        <td><%= log.program %></td>
+        <td><%= log.comment %></td>  
+        <td><%= time.strftime("%B:%e %Y") %></td>
+          
+      </tr>
+    <% end %>
+  </tbody>
+  </table>
+  </div>
+  <div class="row">
+<div class = "col-12">
+<%= link_to 'New Log', '/clients/' + @client.id.to_s + '/log/new',:class => "btn btn-outline-warning" %>
+<%= link_to 'Back', clients_path,:class => "btn btn-outline-warning" %>
+
+
+  </div>
+  </div>
+</div>
+</div>
+
+
+
+
