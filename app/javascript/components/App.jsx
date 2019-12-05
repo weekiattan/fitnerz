@@ -57,11 +57,22 @@ class App extends React.Component {
     if (currentClient !== null) {
       showClient = (
         <div className="showClient">
-          <p>Name: {currentClient.name}</p>
-          <p>Email: {currentClient.email}</p>
-          <p>Contact: {currentClient.phone_number}</p>
-          <p>Gender: {currentClient.sex}</p>
-          <button className="btn btn-primary">
+          <p>
+            <span className="span">Name:</span> {currentClient.name}
+          </p>
+          <p>
+            {' '}
+            <span className="span">Email:</span> {currentClient.email}
+          </p>
+          <p>
+            {' '}
+            <span className="span">Contact:</span> {currentClient.phone_number}
+          </p>
+          <p>
+            {' '}
+            <span className="span">Gender:</span> {currentClient.sex}
+          </p>
+          <button className="btn-lg btn-block">
             <a
               href={`/clients/${currentClient.id}`}
               style={{
@@ -79,7 +90,15 @@ class App extends React.Component {
 
     const clients = this.state.clients.map((client, index) => {
       return (
-        <div key={index} style={{ textAlign: 'center' }}>
+        <div
+          key={index}
+          style={{
+            display: 'flex',
+            justifyContent: 'left',
+            marginLeft: '6rem',
+            marginTop: '2rem'
+          }}
+        >
           <img
             className="profile"
             src="https://icon-library.net/images/avatar-icon-png/avatar-icon-png-8.jpg"
@@ -88,8 +107,15 @@ class App extends React.Component {
           <a
             style={{
               fontSize: '20px',
-              paddingLeft: '15px',
-              fontWeight: '10px'
+              // paddingLeft: '15px',
+              // fontWeight: '10px',
+              color: 'white',
+              textTransform: 'uppercase',
+              fontWeight: 550,
+              marginLeft: '2rem',
+              marginTop: '1rem',
+              fontSize: '1.5rem',
+              lineHeight: '2rem'
             }}
             onClick={() => {
               this.getOneClient(client.id);

@@ -17,13 +17,32 @@ h1 {
   p {
     font-size: 20px;
     padding: 20px;
-    color: #395697;
+    color: white;
     font-family: 'Fjalla One', sans-serif;
-    background-color: pink;
+    background-color: #f37534;
     border-radius: 5px;
+    letter-spacing: 0.25rem;
   }
 }
 
 body {
-  background-color: #aedeca;
+  background-color: #2e242c;
+}
+
+.navbar {
+  background-color: #f37534;
+  border-radius: 5px;
+}
+
+.navbar-brand {
+  color: white;
+}
+
+.btn-lg {
+  background-color: #23c6f8;
+}
+
+.span {
+  color: black;
+  padding: 0.5rem;
 }

@@ -5,14 +5,14 @@ class ClientsController < ApplicationController
   # GET /clients.json
   def index
     @clients = Client.all
-    @log = Log.all
+    @log = Log.all.order("created_at DESC")
   end
 
   # GET /clients/1
   # GET /clients/1.json
   def show
     @client=Client.find(params[:id])
-    # @client = Client.all.where(id: params[:id])
+ 
     @logs = @client.log
   end
 
